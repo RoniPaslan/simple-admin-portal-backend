@@ -11,7 +11,7 @@ Backend ini dibuat dengan **Django + Django REST Framework (DRF)** untuk mengelo
 ## 🔧 Instalasi
 
 1. **Clone repository**
-
+**```bash**
 git clone https://github.com/RoniPaslan/simple-admin-portal-backend.git
 cd simple-admin-portal/backend  / cd backend
 
@@ -104,3 +104,5 @@ EMAIL_HOST_USER = os.getenv("MAIL_USERNAME", "xxxxxxxxx") --> isi dengan kode us
 EMAIL_HOST_PASSWORD = os.getenv("MAIL_PASSWORD", "xxxxxxxx") --> isi dengan password pada mailtrap
 EMAIL_USE_TLS = os.getenv("MAIL_ENCRYPTION", "tls").lower() == "tls"
 DEFAULT_FROM_EMAIL = "no-reply@example.com"
+
+**```**
