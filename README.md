@@ -1,51 +1,84 @@
-# Simple Admin Portal - Backend (Django)
+# Simple Admin Portal dengan RBAC & User Invitation - Backend (Django)
 
-Backend ini dibuat dengan **Django + Django REST Framework (DRF)** untuk mengelola Orders, Products, dan Users. Frontend menggunakan Next.js.
+Backend ini dibuat dengan **Django + Django REST Framework (DRF)** untuk mengelola Orders, Products, dan Users.
+Frontend menggunakan Next.js.
+
+---
 
 ## 📦 Persyaratan
-- Python 3.13.5  
-- pip / venv  
-- sqlite3 / PostgreSQL (sesuaikan `settings.py`)  
-- next.js + npm (untuk frontend, opsional jika hanya backend)
+
+* Python 3.13.5
+* pip / venv
+* SQLite3 / PostgreSQL (sesuaikan `settings.py`)
+* Next.js + npm (opsional, hanya untuk frontend)
+
+---
 
 ## 🔧 Instalasi
 
 1. **Clone repository**
-**```bash**
-git clone https://github.com/RoniPaslan/simple-admin-portal-backend.git
-cd simple-admin-portal/backend  / cd backend
 
-2. Buat virtual environment & aktifkan
+```bash
+git clone https://github.com/RoniPaslan/simple-admin-portal-backend.git
+cd backend
+```
+
+2. **Buat virtual environment & aktifkan**
+
+```bash
 python -m venv venv
+
 # Windows
 venv\Scripts\activate
+
 # Linux / Mac
 source venv/bin/activate
+```
 
-3. Install dependencies
+3. **Install dependencies**
+
+```bash
 pip install -r requirements.txt
+```
 
-4. Konfigurasi .env
+4. **Konfigurasi `.env`**
+   Buat file `.env` berdasarkan `.env.example`:
+
+```bash
 SECRET_KEY=your_django_secret_key_here
 DEBUG=True
 ALLOWED_HOSTS=*
 DATABASE_URL=sqlite:///db.sqlite3
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
+```
 
-5. Migrasi database
+5. **Migrasi database**
+
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
-6. Buat superuser
+6. **Buat superuser**
+
+```bash
 python manage.py createsuperuser
+```
 
-7. Jalankan server development
+7. **Jalankan server development**
+
+```bash
 python manage.py runserver
+```
 
 Server akan berjalan di:
-http://127.0.0.1:8000/
+[http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-🗂 Struktur Direktori
+---
+
+## 📞 Struktur Direktori
+
+```text
 backend/
 ├── manage.py              # Entry point Django project
 ├── requirements.txt       # Dependencies Python
@@ -87,22 +120,37 @@ backend/
     ├── views.py
     ├── tokens.py
     └── urls.py
+```
 
-Role User:
-1. superadmin (optional)
+---
+
+## 👥 Role User
+
+1. superadmin (opsional)
 2. admin
 3. manager
 4. staff
 
-# ======================
-# Email (console untuk testing) disini menggunakan mailtrap
-# ======================
+---
+
+## 📧 Konfigurasi Email
+
+Untuk testing, email menggunakan **Mailtrap** (SMTP):
+
+```bash
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.getenv("MAIL_HOST", "sandbox.smtp.mailtrap.io")
 EMAIL_PORT = int(os.getenv("MAIL_PORT", 2525))
-EMAIL_HOST_USER = os.getenv("MAIL_USERNAME", "xxxxxxxxx") --> isi dengan kode username di mailtrap
-EMAIL_HOST_PASSWORD = os.getenv("MAIL_PASSWORD", "xxxxxxxx") --> isi dengan password pada mailtrap
+EMAIL_HOST_USER = os.getenv("MAIL_USERNAME", "xxxxxxxx")  # username Mailtrap
+EMAIL_HOST_PASSWORD = os.getenv("MAIL_PASSWORD", "xxxxxxxx")  # password Mailtrap
 EMAIL_USE_TLS = os.getenv("MAIL_ENCRYPTION", "tls").lower() == "tls"
 DEFAULT_FROM_EMAIL = "no-reply@example.com"
+```
 
-**```**
+---
+
+## ⚡ Catatan
+
+* Jika hanya ingin backend, Next.js & npm opsional.
+* Sesuaikan database di `.env` sesuai kebutuhan (SQLite / PostgreSQL).
+* Gunakan `.env.example` sebagai panduan untuk konfigurasi environment.
